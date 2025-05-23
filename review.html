@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reviews & Ratings</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    #exitButton {
+      display: block;
+      margin: 20px auto;
+      background: #f44336;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+      width: 120px;
+      text-align: center;
+    }
+    #exitButton:hover {
+      background: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <div id="page">
+    <section>
+      <h2>Leave a Review</h2>
+      <form id="reviewForm">
+        <textarea id="reviewText" placeholder="Write your review here..." maxlength="500" required></textarea>
+        <button type="submit">Submit Review</button>
+      </form>
+      <div id="reviewsList" aria-live="polite" aria-label="List of reviews"></div>
+    </section>
+
+    <section>
+      <h2>Rate a Seller</h2>
+      <form id="ratingForm">
+        <input type="text" id="seller" placeholder="Seller Name" required />
+        <input type="number" id="rating" placeholder="Rating (1-5)" min="1" max="5" required />
+        <button type="submit">Submit Rating</button>
+      </form>
+      <div id="ratingsList" aria-live="polite" aria-label="List of ratings"></div>
+    </section>
+
+    <button id="exitButton" title="Exit">Exit</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('exitButton').addEventListener('click', () => {
+      window.location.href = 'login.html'; // Change if your login page is named differently
+    });
+  </script>
+</body>
+</html>
