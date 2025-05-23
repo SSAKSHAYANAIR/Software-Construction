@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Post Property</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="page">
+    <h2>Post Your Property</h2>
+    <form id="propertyForm">
+      <input type="text" id="title" placeholder="Property Title" required />
+      <input type="number" id="price" placeholder="Price" required />
+      <input type="text" id="location" placeholder="Location" required />
+      <input type="file" id="images" multiple accept="image/*" />
+      <button type="submit">Post Property</button>
+    </form>
+    <div id="preview"></div>
+    <button id="goToSearch">Next ➡️ Search</button>
+  </div>
+  <script>
+  // Page enter animation
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('page-enter');
+    requestAnimationFrame(() => {
+      document.body.classList.add('page-enter-active');
+    });
+    document.body.addEventListener('transitionend', () => {
+      document.body.classList.remove('page-enter', 'page-enter-active');
+    }, { once: true });
+  });
+
+  // Go to search.html with exit animation
+  document.getElementById('goToSearch').addEventListener('click', () => {
+    document.body.classList.add('page-exit');
+    requestAnimationFrame(() => {
+      document.body.classList.add('page-exit-active');
+    });
+    document.body.addEventListener('transitionend', () => {
+      window.location.href = 'search.html';
+    }, { once: true });
+  });
+</script>
+
+  <script src="script.js"></script>
+</body>
+</html>
