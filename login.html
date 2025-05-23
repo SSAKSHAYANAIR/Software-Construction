@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Builder Login</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body id="page">
+  <div id="page-content">
+    <h2>Builder Login</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script>
+    // Animate page-enter on load
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('page-enter');
+      requestAnimationFrame(() => {
+        document.body.classList.add('page-enter-active');
+      });
+      document.body.addEventListener('transitionend', () => {
+        document.body.classList.remove('page-enter', 'page-enter-active');
+      }, { once: true });
+    });
+
+    // Login logic with exit animation before redirect
+    const users = [
+      { username: 'deju', password: 'pass123' },
+      { username: 'builder2', password: 'pass456' }
+    ];
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const uname = document.getElementById('username').value;
+      const pword = document.getElementById('password').value;
+      const isValid = users.some(user => user.username === uname && user.password === pword);
+
+      if (!isValid) {
+        alert('Invalid credentials');
+        return;
+      }
+
+      sessionStorage.setItem('loggedInUser', uname);
+
+      // Trigger exit animation
+      document.body.classList.add('page-exit');
+      requestAnimationFrame(() => {
+        document.body.classList.add('page-exit-active');
+      });
+
+      // Redirect after animation finishes
+      document.body.addEventListener('transitionend', () => {
+        window.location.href = 'post.html';
+      }, { once: true });
+    });
+  </script>
+</body>
+</html>
