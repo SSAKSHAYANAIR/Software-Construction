@@ -1,0 +1,166 @@
+/* Body and general styles */
+body {
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffefd5, #ffe4e1);
+  color: #333;
+  transition: background 0.5s ease;
+  overflow-x: hidden; /* prevent horizontal scroll during animation */
+}
+#page {
+  width: 50%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(255, 165, 0, 0.2);
+}
+/* Background fade on page transitions */
+body.page-enter, body.page-exit {
+  transition: background 0.5s ease;
+}
+body.page-exit {
+  background: linear-gradient(135deg, #f5e6e0, #f8d8d3);
+}
+body.page-enter {
+  background: linear-gradient(135deg, #ffefd5, #ffe4e1);
+}
+
+/* Form & Section hover */
+form, section {
+  margin-bottom: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(255, 165, 0, 0.2);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+form:hover, section:hover {
+  box-shadow: 0 12px 30px rgba(255, 140, 0, 0.4);
+  transform: translateY(-5px);
+}
+
+/* Inputs and buttons */
+input, textarea, select, button {
+  display: block;
+  width: 95%;
+  margin: 12px 0;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ffa500;
+  border-radius: 6px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: #fffbea;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #ff7f50;
+  box-shadow: 0 0 8px #ff7f50aa;
+  outline: none;
+}
+
+/* Button styles with sparkle emoji */
+button {
+  background: linear-gradient(45deg, #ff6a00, #ee0979);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.4s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #ee0979, #ff6a00);
+  transform: scale(1.05);
+}
+
+button::after {
+  content: "✨";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 20px;
+  animation: sparkle 1.5s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(-5px) scale(1.2);
+  }
+}
+
+/* Preview images */
+#preview img {
+  width: 100px;
+  margin: 5px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(255, 165, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+#preview img:hover {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(255, 140, 0, 0.7);
+}
+
+/* Heading with house emoji bounce */
+h1, h2, h3 {
+  position: relative;
+  font-weight: 700;
+  color: #ff4500;
+  margin-bottom: 15px;
+  user-select: none;
+}
+
+h1::before, h2::before, h3::before {
+  content: "🏠";
+  display: inline-block;
+  margin-right: 8px;
+  animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Page transition animations */
+.page-enter {
+  opacity: 0.2s;
+  transform: translateX(100%);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-enter-active {
+  opacity: 0.2s ease;
+  transform: translateX(0);
+}
+
+.page-exit {
+  opacity: 0.2s ease;
+  transform: translateX(0);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+}
