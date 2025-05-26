@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Search Properties</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="page">
+    <h2>Search Properties</h2>
+    <input type="text" id="searchBHK" placeholder="Search by BHK" />
+    <input type="text" id="searchArea" placeholder="Search by Area" />
+    <select id="amenitiesFilter">
+      <option value="">Select Amenity</option>
+      <option value="pool">Swimming Pool</option>
+      <option value="gym">Gym</option>
+      <option value="parking">Parking</option>
+    </select>
+    <button onclick="filterProperties()">Search</button>
+    <div id="propertyList"></div>
+    <button id="goToReview">Next ➡️ Reviews</button>
+  </div>
+  <script>
+  // Page enter animation
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('page-enter');
+    requestAnimationFrame(() => {
+      document.body.classList.add('page-enter-active');
+    });
+    document.body.addEventListener('transitionend', () => {
+      document.body.classList.remove('page-enter', 'page-enter-active');
+    }, { once: true });
+  });
+
+  // Go to review.html with exit animation
+  document.getElementById('goToReview').addEventListener('click', () => {
+    document.body.classList.add('page-exit');
+    requestAnimationFrame(() => {
+      document.body.classList.add('page-exit-active');
+    });
+    document.body.addEventListener('transitionend', () => {
+      window.location.href = 'review.html';
+    }, { once: true });
+  });
+</script>
+
+  <script src="script.js"></script>
+</body>
+</html>
